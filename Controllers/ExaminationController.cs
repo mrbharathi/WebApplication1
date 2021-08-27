@@ -14,7 +14,7 @@ namespace WebApplication1.Controllers
         public string Gender { get; set; }
     }
     [ApiController]
-    [Route("[controller]")]
+    [Route("[Controller]")]
     public class ExaminationController : ControllerBase
     {
         private static readonly string[] Names = new[]
@@ -36,7 +36,7 @@ namespace WebApplication1.Controllers
             
             return Enumerable.Range(1, 30).Select(index => new Exam
             {
-                Name = Names[index % Names.Length - 1],
+                Name = Names[index % (Names.Length - 1)],
                 Id = index.ToString(),
                 Gender = (index % 3).ToString()
             })
