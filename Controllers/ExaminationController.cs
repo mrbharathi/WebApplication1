@@ -25,7 +25,7 @@ namespace WebApplication1.Controllers
 
         private static readonly string[] Names = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "1Freezing", "2Bracing", "3Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
         private readonly ILogger<ExaminationController> _logger;
@@ -36,19 +36,19 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Exam> Get()
         {
-            return DownloadExams();
+            //return DownloadExams();
 
-            //var rng = new Random();
-            
-            //return Enumerable.Range(1, 30).Select(index => new Exam
-            //{
-            //    Name = Names[index % (Names.Length - 1)],
-            //    Id = index.ToString(),
-            //    Gender = (index % 3).ToString()
-            //})
-            //.ToArray();
+            var rng = new Random();
+
+            return Enumerable.Range(1, 30).Select(index => new Exam
+            {
+                Name = Names[index % (Names.Length - 1)],
+                Id = index.ToString(),
+                Gender = (index % 3).ToString()
+            })
+            .ToArray();
         }
 
         [Route("exams/{id}")]
